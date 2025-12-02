@@ -1,11 +1,11 @@
 """
 MODULE 1: Data preparation for the project.
 
-In this module, i will:
-- load the three raw datasets located under data/raw
-- clean each dataset (reshaping, renaming, etc.)
-- merge them into a single dataset
-- save the merged dataset under data/processed
+This module:
+- loads the three raw datasets located under data/raw
+- cleans each dataset (reshaping, renaming, etc.)
+- merges them into a single dataset
+- saves the merged dataset under data/processed
 
 This will provide a country-year panel of roughly 190 countries, from which I will later choose a sample of 50 countries according to data availability and region/income level representation.
 """
@@ -258,5 +258,5 @@ def build_merged_dataset(
     return panel_long
 
 if __name__ == "__main__":
-    df = build_merged_dataset(save=False)
+    df = build_merged_dataset(save=True)
     print(df.head(10))
