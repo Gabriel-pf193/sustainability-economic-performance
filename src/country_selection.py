@@ -169,7 +169,7 @@ if __name__ == "__main__":
         print("50-country panel shape:", df_50.shape)
 
         print("\nUnique countries in 50-country panel:")
-        print(df_50[["Country Name", "Country Code"]].drop_duplicates().head())
+        print(df_50[["Country Name", "Country Code"]].drop_duplicates().head(50))
 
         # Optional: Region x Income for the 50-country panel
         region_income_50 = make_region_income_table(df_50)
