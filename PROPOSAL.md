@@ -15,7 +15,7 @@ A sample of approximately 50 countries will be selected based on data availabili
 
 The dataset will be organised as a panel (country - year). That way, I can analyse, through descriptive statistics, how changes in sustainability indicators and economic outcomes evolve within the countries over time, while also accounting for structural differences across countries.
 
-I will estimate a fixed-eDects panel regression model where GDP growth is the dependent variable and sustainability indicators serve as explanatory variables:
+I will estimate a fixed-effects panel regression model where GDP growth is the dependent variable and sustainability indicators serve as explanatory variables:
 
 ```math
 \text{GDP Growth}_{i,t}
@@ -48,7 +48,7 @@ Models will be evaluated and formally compared using metrics such as mean square
 
 The analysis is descriptive and predictive only, not causal. The results do not allow any statements about whether sustainability indicators cause higher or lower economic performance.
 
-Expected challenges include incomplete data coverage, uneven time availability for certain indicators, and regional diDerences in data quality. These issues will be addressed by filtering countries and years with sufficient data and ensuring a diverse sample across regions. Correlated indicators may also affect results; redundant variables will be removed when necessary.
+Expected challenges include incomplete data coverage, uneven time availability for certain indicators, and regional differences in data quality. These issues will be addressed by filtering countries and years with sufficient data and ensuring a diverse sample across regions. Correlated indicators may also affect results; redundant variables will be removed when necessary.
 
 If time permits, I would like to make a dashboard that would bring an easier and more pleasant way to view the results.
 
