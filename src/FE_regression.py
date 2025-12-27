@@ -5,10 +5,11 @@ This module:
     1) Builds the regression dataset by:
         a) Standardizing every ESG indicator
         b) changing the direction of the indicators when necessary
-           so that in increase in an indicators means better ESG performance
+           so that an increase in an indicator means better ESG performance
         c) Building an index for each ESG category
-           (one index for environment, another for social, and one last for governance)
-        d) Combine those indexes with the economic indicators
+           (one index for environment, another for social, and one last for governance), 
+           so that we can analyse each aspect separately in the regression
+        d) Combine those indexes with the economic indicators to form the dataset for the regression
     2) Save the new dataset to data/processed/panel_FE_regression.csv
     3) Run Country + Year fixed effects regression (clustered SE by country)
     4) Save the regression table to results/regression/fixed_effects_regression.tex
@@ -30,11 +31,12 @@ FE_TABLE_TEX_PATH = RESULTS_REG_DIR / "fixed_effects_regression.tex"
 
 # ---------- ESG Category + Direction ----------
 """
-ESG map (category + direction)
-+1 = higher value is better
--1 = higher value is worse
+* ESG map (category + direction)
+  +1 = higher value is better
+  -1 = higher value is worse
+  Doing this makes all indicators go in the same direction, allowing me to build an index for each ESG category.
 
-List of economic indicators
+* List of economic indicators
 """
 
 ESG_MAP = {
@@ -159,8 +161,10 @@ def save_regression_dataset(reg_df: pd.DataFrame, path: Path = FE_DATASET_PATH) 
     reg_df.to_csv(path, index=False)
     print(f"FE regression dataset saved to: {path}")
 
+# ----- Country-Year Fixed Effects Regression -----
+
 def run_country_year_fe(reg_df: pd.DataFrame):
-    # Keep only vars needed for the base FE model
+    # Keep only vars needed for the FE model
     fe_df = reg_df[["country_code", "Year", "gdp_growth", "ENV_index", "SOC_index", "GOV_index"]].dropna()
 
     model = smf.ols(
@@ -171,8 +175,8 @@ def run_country_year_fe(reg_df: pd.DataFrame):
         """,
         data=fe_df,
     ).fit(
-        cov_type="cluster",
-        cov_kwds={"groups": fe_df["country_code"]},
+        cov_type="cluster", # cluster SEs at the country level to correct for within-country dependence
+        cov_kwds={"groups": fe_df["country_code"]}, 
     )
 
     return model
@@ -184,9 +188,8 @@ def save_regression_table_tex(model, path: Path = FE_TABLE_TEX_PATH) -> None:
     print(f"Regression table saved to: {path}")
 
 
-# =========================
-# Run
-# =========================
+# ----- Function to call in main.py -----
+
 def run_fe_regression() -> None:
     print(f"Reading: {PANEL_50_PATH}")
     df_50 = load_panel_50(PANEL_50_PATH)

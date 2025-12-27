@@ -164,8 +164,8 @@ def clean_gdp_dataset(gdp_df: pd.DataFrame) -> pd.DataFrame:
 def prepare_country_classification(class_df: pd.DataFrame) -> pd.DataFrame:
     """
     Clean the country classification table:
-    - rename columns to match the other datasets
-    - keep only relevant columns
+    - rename columns to match the other datasets, so they later merge correctly
+    - keep only the columns useful for the project (lending category not useful)
     """
     class_clean = class_df.rename(
         columns={
@@ -189,7 +189,7 @@ def merge_to_panel(
     Merge the cleaned ESG + GDP datasets with the country classification table
     into one long panel DataFrame.
     """
-    # ensure same column order before concatenation
+    # ensure the column order is the same, before concatenation
     common_cols = [
         "Country Name",
         "Country Code",
@@ -210,14 +210,14 @@ def merge_to_panel(
         ["Country Code", "Year", "Category"]
     ).reset_index(drop=True)
 
-    # merge with country classification
+    # merge with the country classification dataset
     panel_long = all_long.merge(
         class_clean,
         on="Country Code",
         how="left",
     )
 
-    # clean up duplicate country name columns if present
+    # clean up duplicate country name columns
     if "Country Name_x" in panel_long.columns:
         panel_long = panel_long.rename(columns={"Country Name_x": "Country Name"})
         panel_long = panel_long.drop(columns=["Country Name_y"])
@@ -239,7 +239,7 @@ def build_merged_dataset(
     - cleans and reshapes ESG + GDP
     - prepares country classification
     - merges everything into one panel_long DataFrame
-    - optionally saves to data/processed/<filename>
+    - saves the new dataset to data/processed
     """
     df_esg, df_gdp, df_class = load_raw_data()
 

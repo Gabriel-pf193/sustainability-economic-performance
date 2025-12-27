@@ -38,6 +38,12 @@ def load_full_panel() -> pd.DataFrame:
 
 # ---------- List of selected countries (by name) ----------
 
+""" 
+This sample has been established by choosing countries so that every region 
+(and even sub-regions, for example in Europe, I didn't only choose occidental countries, 
+I also made sure to represent various regions of of Europe) and income level across the world is represented, while accounting for missing values (I did not choose a country with a percentage of data availability below 70%).
+"""
+
 SELECTED_COUNTRY_NAMES = [
     # North America
     "United States", "Canada",
@@ -71,7 +77,7 @@ SELECTED_COUNTRY_NAMES = [
 def select_50_countries(df: pd.DataFrame,
                         selected_names: list[str] | None = None) -> pd.DataFrame:
     """
-    Filter the full panel to keep only the 50 selected countries (by Country Name).
+    Filter the full panel to keep only the 50 selected countries (sorted by Country Name).
     """
     if selected_names is None:
         selected_names = SELECTED_COUNTRY_NAMES
@@ -99,7 +105,7 @@ def build_50_country_panel(
 
     - load the full merged panel
     - filter it to the selected 50 countries
-    - optionally save the filtered dataset to data/processed
+    - save the filtered dataset to data/processed
     """
     df_full = load_full_panel()
     df_50 = select_50_countries(df_full)
@@ -139,7 +145,7 @@ def make_region_income_table(df: pd.DataFrame) -> pd.DataFrame:
 
 def get_selected_countries_metadata(df_50: pd.DataFrame) -> pd.DataFrame:
     """
-    Return a deduplicated table listing the selected countries with:
+    Return a deduplicated (divided in two parts) table listing the selected countries with:
     - Country Name
     - Country Code
     - Region
@@ -171,7 +177,7 @@ if __name__ == "__main__":
         print("\nUnique countries in 50-country panel:")
         print(df_50[["Country Name", "Country Code"]].drop_duplicates().head(50))
 
-        # Optional: Region x Income for the 50-country panel
+        # Region x Income table for the 50-country panel
         region_income_50 = make_region_income_table(df_50)
         print("\nRegion x Income Group table (50 countries):")
         print(region_income_50)
