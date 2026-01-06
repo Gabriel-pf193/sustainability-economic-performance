@@ -253,7 +253,6 @@ def build_merged_dataset(
     if save:
         out_path = PROCESSED_DIR / filename
         panel_long.to_csv(out_path, index=False)
-        print(f"Saved merged dataset to: {out_path}")
 
     return panel_long
 

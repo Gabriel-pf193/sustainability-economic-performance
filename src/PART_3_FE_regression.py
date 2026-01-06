@@ -1,5 +1,5 @@
 """
-MODULE 4: Fixed-Effects Regression
+MODULE 3: Fixed-Effects Regression
 
 This module:
     1) Builds the regression dataset by:
@@ -159,7 +159,7 @@ def build_regression_dataset(df_50: pd.DataFrame) -> pd.DataFrame:
 def save_regression_dataset(reg_df: pd.DataFrame, path: Path = FE_DATASET_PATH) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     reg_df.to_csv(path, index=False)
-    print(f"FE regression dataset saved to: {path}")
+    print(f"Saved regression dataset (CSV)")
 
 # ----- Country-Year Fixed Effects Regression -----
 
@@ -167,6 +167,12 @@ def run_country_year_fe(reg_df: pd.DataFrame):
     # Keep only vars needed for the FE model
     fe_df = reg_df[["country_code", "Year", "gdp_growth", "ENV_index", "SOC_index", "GOV_index"]].dropna()
 
+    print(
+    "\nNote: statsmodels may print a rank warning due to many fixed effects "
+    "combined with clustered standard errors. This is expected and does not "
+    "affect coefficient estimation."
+    )
+    
     model = smf.ols(
         formula="""
             gdp_growth ~ ENV_index + SOC_index + GOV_index
@@ -185,24 +191,25 @@ def save_regression_table_tex(model, path: Path = FE_TABLE_TEX_PATH) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     latex_table = model.summary().as_latex()
     path.write_text(latex_table, encoding="utf-8")
-    print(f"Regression table saved to: {path}")
+    print(f"\nRegression table saved (TEX)")
 
 
 # ----- Function to call in main.py -----
 
 def run_fe_regression() -> None:
-    print(f"Reading: {PANEL_50_PATH}")
     df_50 = load_panel_50(PANEL_50_PATH)
-    print("Shape:", df_50.shape)
 
     reg_df = build_regression_dataset(df_50)
     print("Regression dataset shape:", reg_df.shape)
-    print("Columns:", list(reg_df.columns))
 
     save_regression_dataset(reg_df, FE_DATASET_PATH)
 
     model = run_country_year_fe(reg_df)
-    print(model.summary())
+    print("\nFixed-effects regression completed")
+    print(f"Observations: {int(model.nobs)}")
+    print(f"R²: {model.rsquared:.3f}")
+    print(f"Adj. R²: {model.rsquared_adj:.3f}")
+    print("Standard errors clustered at country level\n")
 
     save_regression_table_tex(model, FE_TABLE_TEX_PATH)
 
