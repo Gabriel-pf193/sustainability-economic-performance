@@ -1,0 +1,379 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Selected countries (50-country sample)</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; }
+    table { border-collapse: collapse; }
+    th, td { border: 1px solid #999; padding: 6px 10px; }
+    th { background: #f2f2f2; }
+  </style>
+</head>
+<body>
+<h2>Selected countries (50-country sample)</h2>
+<table class="dataframe">
+  <thead>
+    <tr style="text-align: center;">
+      <th></th>
+      <th>Country Name</th>
+      <th>Country Code</th>
+      <th>Region</th>
+      <th>Income Group</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>Algeria</td>
+      <td>DZA</td>
+      <td>Middle East, North Africa, Afghanistan &amp; Pakistan</td>
+      <td>Upper middle income</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Australia</td>
+      <td>AUS</td>
+      <td>East Asia &amp; Pacific</td>
+      <td>High income</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Bangladesh</td>
+      <td>BGD</td>
+      <td>South Asia</td>
+      <td>Lower middle income</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Bhutan</td>
+      <td>BTN</td>
+      <td>South Asia</td>
+      <td>Lower middle income</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Bolivia</td>
+      <td>BOL</td>
+      <td>Latin America &amp; Caribbean</td>
+      <td>Lower middle income</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Brazil</td>
+      <td>BRA</td>
+      <td>Latin America &amp; Caribbean</td>
+      <td>Upper middle income</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Burkina Faso</td>
+      <td>BFA</td>
+      <td>Sub-Saharan Africa</td>
+      <td>Low income</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Cambodia</td>
+      <td>KHM</td>
+      <td>East Asia &amp; Pacific</td>
+      <td>Lower middle income</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Canada</td>
+      <td>CAN</td>
+      <td>North America</td>
+      <td>High income</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Chile</td>
+      <td>CHL</td>
+      <td>Latin America &amp; Caribbean</td>
+      <td>High income</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>China</td>
+      <td>CHN</td>
+      <td>East Asia &amp; Pacific</td>
+      <td>Upper middle income</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Colombia</td>
+      <td>COL</td>
+      <td>Latin America &amp; Caribbean</td>
+      <td>Upper middle income</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Costa Rica</td>
+      <td>CRI</td>
+      <td>Latin America &amp; Caribbean</td>
+      <td>High income</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Dominican Republic</td>
+      <td>DOM</td>
+      <td>Latin America &amp; Caribbean</td>
+      <td>Upper middle income</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Egypt, Arab Rep.</td>
+      <td>EGY</td>
+      <td>Middle East, North Africa, Afghanistan &amp; Pakistan</td>
+      <td>Lower middle income</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>France</td>
+      <td>FRA</td>
+      <td>Europe &amp; Central Asia</td>
+      <td>High income</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Georgia</td>
+      <td>GEO</td>
+      <td>Europe &amp; Central Asia</td>
+      <td>Upper middle income</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Germany</td>
+      <td>DEU</td>
+      <td>Europe &amp; Central Asia</td>
+      <td>High income</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Ghana</td>
+      <td>GHA</td>
+      <td>Sub-Saharan Africa</td>
+      <td>Lower middle income</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Honduras</td>
+      <td>HND</td>
+      <td>Latin America &amp; Caribbean</td>
+      <td>Lower middle income</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Hungary</td>
+      <td>HUN</td>
+      <td>Europe &amp; Central Asia</td>
+      <td>High income</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>India</td>
+      <td>IND</td>
+      <td>South Asia</td>
+      <td>Lower middle income</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Indonesia</td>
+      <td>IDN</td>
+      <td>East Asia &amp; Pacific</td>
+      <td>Upper middle income</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Iran, Islamic Rep.</td>
+      <td>IRN</td>
+      <td>Middle East, North Africa, Afghanistan &amp; Pakistan</td>
+      <td>Upper middle income</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Israel</td>
+      <td>ISR</td>
+      <td>Middle East, North Africa, Afghanistan &amp; Pakistan</td>
+      <td>High income</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Japan</td>
+      <td>JPN</td>
+      <td>East Asia &amp; Pacific</td>
+      <td>High income</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Kazakhstan</td>
+      <td>KAZ</td>
+      <td>Europe &amp; Central Asia</td>
+      <td>Upper middle income</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Kenya</td>
+      <td>KEN</td>
+      <td>Sub-Saharan Africa</td>
+      <td>Lower middle income</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Korea, Rep.</td>
+      <td>KOR</td>
+      <td>East Asia &amp; Pacific</td>
+      <td>High income</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>Madagascar</td>
+      <td>MDG</td>
+      <td>Sub-Saharan Africa</td>
+      <td>Low income</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Maldives</td>
+      <td>MDV</td>
+      <td>South Asia</td>
+      <td>Upper middle income</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Mauritius</td>
+      <td>MUS</td>
+      <td>Sub-Saharan Africa</td>
+      <td>Upper middle income</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>Mexico</td>
+      <td>MEX</td>
+      <td>Latin America &amp; Caribbean</td>
+      <td>Upper middle income</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>Nepal</td>
+      <td>NPL</td>
+      <td>South Asia</td>
+      <td>Lower middle income</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Nigeria</td>
+      <td>NGA</td>
+      <td>Sub-Saharan Africa</td>
+      <td>Lower middle income</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Pakistan</td>
+      <td>PAK</td>
+      <td>Middle East, North Africa, Afghanistan &amp; Pakistan</td>
+      <td>Lower middle income</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>Peru</td>
+      <td>PER</td>
+      <td>Latin America &amp; Caribbean</td>
+      <td>Upper middle income</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Philippines</td>
+      <td>PHL</td>
+      <td>East Asia &amp; Pacific</td>
+      <td>Lower middle income</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>Poland</td>
+      <td>POL</td>
+      <td>Europe &amp; Central Asia</td>
+      <td>High income</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>Romania</td>
+      <td>ROU</td>
+      <td>Europe &amp; Central Asia</td>
+      <td>High income</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>Rwanda</td>
+      <td>RWA</td>
+      <td>Sub-Saharan Africa</td>
+      <td>Low income</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>Saudi Arabia</td>
+      <td>SAU</td>
+      <td>Middle East, North Africa, Afghanistan &amp; Pakistan</td>
+      <td>High income</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>South Africa</td>
+      <td>ZAF</td>
+      <td>Sub-Saharan Africa</td>
+      <td>Upper middle income</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>Sri Lanka</td>
+      <td>LKA</td>
+      <td>South Asia</td>
+      <td>Lower middle income</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>Tunisia</td>
+      <td>TUN</td>
+      <td>Middle East, North Africa, Afghanistan &amp; Pakistan</td>
+      <td>Lower middle income</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>United Kingdom</td>
+      <td>GBR</td>
+      <td>Europe &amp; Central Asia</td>
+      <td>High income</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>United States</td>
+      <td>USA</td>
+      <td>North America</td>
+      <td>High income</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>Uruguay</td>
+      <td>URY</td>
+      <td>Latin America &amp; Caribbean</td>
+      <td>High income</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>Uzbekistan</td>
+      <td>UZB</td>
+      <td>Europe &amp; Central Asia</td>
+      <td>Lower middle income</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>Viet Nam</td>
+      <td>VNM</td>
+      <td>East Asia &amp; Pacific</td>
+      <td>Lower middle income</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
