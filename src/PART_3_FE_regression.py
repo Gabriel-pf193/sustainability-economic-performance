@@ -209,7 +209,19 @@ def run_fe_regression() -> None:
     print(f"Observations: {int(model.nobs)}")
     print(f"R²: {model.rsquared:.3f}")
     print(f"Adj. R²: {model.rsquared_adj:.3f}")
-    print("Standard errors clustered at country level\n")
+
+
+    # Print ESG coefficients + clustered SE + p-values
+    esg_vars = ["ENV_index", "SOC_index", "GOV_index"]
+    print("\nESG coefficients (clustered SE):")
+    for v in esg_vars:
+        if v in model.params.index:
+            coef = model.params[v]
+            se = model.bse[v]
+            pval = model.pvalues[v]
+            print(f"  {v}: coef={coef:.4f}, se={se:.4f}, p={pval:.3f}")
+
+    print("\nStandard errors clustered at country level\n")
 
     save_regression_table_tex(model, FE_TABLE_TEX_PATH)
 
